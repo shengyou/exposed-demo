@@ -19,6 +19,7 @@ object Books : IntIdTable(name = "books") {
     val genre = varchar("genre", 255)
     val isbn = varchar("isbn", 13)
     val publisher = varchar("publisher", 255)
+    val author = reference("author", Authors)
 }
 
 //object Books : UUIDTable(name = "books") {

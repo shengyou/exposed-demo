@@ -12,4 +12,6 @@ class Book(id: EntityID<Int>) : IntEntity(id) {
     var genre by Books.genre
     var isbn by Books.isbn
     var publisher by Books.publisher
+
+    var author by Author referencedOn Books.author
 }
