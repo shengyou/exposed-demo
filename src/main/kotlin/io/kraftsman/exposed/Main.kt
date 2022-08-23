@@ -1,9 +1,13 @@
 package io.kraftsman.exposed
 
+import com.github.javafaker.Faker
+import io.kraftsman.exposed.entities.Author
+import io.kraftsman.exposed.entities.Book
 import io.kraftsman.exposed.tables.Authors
 import io.kraftsman.exposed.tables.Books
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun main() {
@@ -15,9 +19,41 @@ fun main() {
     )
 
     transaction {
+        SchemaUtils.drop(
+            Books,
+            Authors,
+        )
+
         SchemaUtils.create(
             Books,
             Authors,
         )
+    }
+
+    val faker = Faker()
+
+    transaction {
+        val fixedAuthor = Author.new {
+            name = faker.book().author()
+        }
+
+        repeat(20) {
+
+            val newAuthor = if (it in listOf(1, 3, 5, 7, 9)) {
+                fixedAuthor
+            } else {
+                Author.new {
+                    name = faker.book().author()
+                }
+            }
+
+            Book.new {
+                title = faker.book().title()
+                genre = faker.book().genre()
+                isbn = faker.code().isbn13()
+                publisher = faker.book().publisher()
+                author = newAuthor
+            }
+        }
     }
 }
