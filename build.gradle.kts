@@ -17,6 +17,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-dao:0.39.2")
     implementation("org.jetbrains.exposed:exposed-jdbc:0.39.2")
     implementation("mysql:mysql-connector-java:8.0.30")
+    implementation("com.github.javafaker:javafaker:1.0.2")
     implementation("ch.qos.logback:logback-classic:1.2.11")
     testImplementation(kotlin("test"))
 }
