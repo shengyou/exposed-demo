@@ -1,8 +1,8 @@
+package io.kraftsman.exposed.dsl
+
 import com.github.javafaker.Faker
-import io.kraftsman.exposed.tables.Authors
 import io.kraftsman.exposed.tables.Books
 import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 
@@ -13,13 +13,6 @@ fun main() {
         user = "root",
         password = "root"
     )
-
-    transaction {
-        SchemaUtils.create(
-            Books,
-            Authors,
-        )
-    }
 
     val faker = Faker()
 
