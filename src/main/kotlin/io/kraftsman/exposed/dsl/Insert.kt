@@ -1,7 +1,9 @@
+import com.github.javafaker.Faker
 import io.kraftsman.exposed.tables.Authors
 import io.kraftsman.exposed.tables.Books
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun main() {
@@ -17,5 +19,18 @@ fun main() {
             Books,
             Authors,
         )
+    }
+
+    val faker = Faker()
+
+    transaction {
+        (1..20).forEach { _ ->
+            Books.insert {
+                it[title] = faker.book().title()
+                it[genre] = faker.book().genre()
+                it[isbn] = faker.code().isbn13()
+                it[publisher] = faker.book().publisher()
+            }
+        }
     }
 }
