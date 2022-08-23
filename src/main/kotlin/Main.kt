@@ -1,4 +1,8 @@
+import io.kraftsman.exposed.tables.Authors
+import io.kraftsman.exposed.tables.Books
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.transactions.transaction
 
 fun main() {
     Database.connect(
@@ -7,4 +11,11 @@ fun main() {
         user = "root",
         password = "root"
     )
+
+    transaction {
+        SchemaUtils.create(
+            Books,
+            Authors,
+        )
+    }
 }

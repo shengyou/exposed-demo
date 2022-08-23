@@ -12,7 +12,7 @@ import org.jetbrains.exposed.sql.Table
 //    override val primaryKey = PrimaryKey(id)
 //}
 
-object Books : IntIdTable(/*name = "books"*/) {
+object Books : IntIdTable(name = "books") {
     val title = varchar("title", 255)
     val isbn = varchar("isbn", 13)
 }
