@@ -1,4 +1,4 @@
-package io.kraftsman.exposed.dao
+package io.kraftsman.exposed.demo.dao
 
 import io.kraftsman.exposed.entities.Author
 import io.kraftsman.exposed.tables.Authors

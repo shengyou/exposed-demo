@@ -1,4 +1,4 @@
-package io.kraftsman.exposed.dsl
+package io.kraftsman.exposed.demo.dsl
 
 import io.kraftsman.exposed.tables.Books
 import org.jetbrains.exposed.sql.*

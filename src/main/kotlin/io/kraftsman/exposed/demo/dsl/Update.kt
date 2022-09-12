@@ -1,7 +1,7 @@
-package io.kraftsman.exposed.dao
+package io.kraftsman.exposed.demo.dsl
 
-import io.kraftsman.exposed.entities.Author
-import org.jetbrains.exposed.sql.Database
+import io.kraftsman.exposed.tables.Books
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
 fun main() {
@@ -13,7 +13,8 @@ fun main() {
     )
 
     transaction {
-        val author = Author.findById(1)
-        author?.delete()
+        Books.update({ Books.id eq 1 }) {
+            it[title] = "Updated book title"
+        }
     }
 }

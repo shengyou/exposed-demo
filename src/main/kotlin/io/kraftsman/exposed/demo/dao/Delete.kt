@@ -1,6 +1,5 @@
-package io.kraftsman.exposed.dao
+package io.kraftsman.exposed.demo.dao
 
-import com.github.javafaker.Faker
 import io.kraftsman.exposed.entities.Author
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -13,13 +12,8 @@ fun main() {
         password = "root"
     )
 
-    val faker = Faker()
-
     transaction {
-        repeat(20) {
-            Author.new {
-                name = faker.book().author()
-            }
-        }
+        val author = Author.findById(2)
+        author?.delete()
     }
 }
