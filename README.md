@@ -4,7 +4,7 @@ Here are the demo code for [Exposed](https://github.com/JetBrains/Exposed). A SQ
 
 ## Resources
 
-* Slide: 
+* Slide: https://www.slideshare.net/shengyou/using-the-exposed-sql-framework-to-manage-your-database
 
 ### Use with caution
 
